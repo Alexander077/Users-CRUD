@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.testtask.userapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>User CRUD</name>
+    <description>A sample application demonstrating CRUD actions with REST API</description>
+    <author email="renzy.max@gmail.com" href="https://www.linkedin.com/in/alexander-litvinov-2b3527a6/">
+        Alexander Litvinov
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+</widget>

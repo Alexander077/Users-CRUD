@@ -8,4 +8,6 @@
     <content src="index.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    
+    <hook type="after_prepare" src="scripts/hooks/after_prepare/update_index.js" />
 </widget>

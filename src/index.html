@@ -5,10 +5,6 @@
   <meta charset="utf-8">
   <title>UsersApp</title>
   <base href="/">
-  <!-- <script>
-    document.write('<base href="' + document.location.href + '" />');
-    console.log("Curloc", document.location.href);
-  </script> -->
   <!--
         Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
             https://cordova.apache.org/docs/en/latest/
@@ -23,24 +19,29 @@
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-
-
-  <!-- web-version-config-on -->
-  <style>
-    /* @import url('//fonts.googleapis.com/cssfamily=Montserrat:100'); */
-  </style>
-  <!-- end-web-version-config-on -->
-
-  <!-- cordova-version-config-off
-   <script type="text/javascript" src="cordova.js"></script>
-   end-cordova-version-config-off -->
-
-  <!-- <script type="text/javascript" src="cordova.js"></script> -->
 </head>
 
 <body class="mat-typography">
   <app-root></app-root>
-</body>
 
+  <!-- cordova-section-begin
+   <script>
+         //Fix for broken angular routing after pressing of device "back" button
+         //See: https://github.com/angular/angular/issues/22509
+          window.addEventListener = function () {
+            (window.EventTarget || Window).prototype.addEventListener.apply(this, arguments);
+          };
+          window.removeEventListener = function () {
+            (window.EventTarget || Window).prototype.removeEventListener.apply(this, arguments);
+          };
+          document.addEventListener = function () {
+            (window.EventTarget || Document).prototype.addEventListener.apply(this, arguments);
+          };
+          document.removeEventListener = function () {
+            (window.EventTarget || Document).prototype.removeEventListener.apply(this, arguments);
+          };
+   </script>
+   <script type="text/javascript" src="cordova.js"></script>
+   cordova-section-end -->
+</body>
 </html>

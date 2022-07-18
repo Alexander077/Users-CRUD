@@ -18,6 +18,8 @@
   "cordova": {
     "platforms": [
       "android"
-    ]
+    ],
+    "plugins": {
+    }
   }
 }

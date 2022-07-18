@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, ReplaySubject, take } from 'rxjs';
+import { BehaviorSubject, map, Observable, ReplaySubject, take } from 'rxjs';
 import { User } from 'src/app/models/User';
 import { environment } from 'src/environments/environment';
 
@@ -12,11 +12,33 @@ export class UserRepositoryService {
 
    getUsers(): Observable<User[]> {
       let path = `${environment.apiBaseUrl}/users`;
-      return this.http.get<User[]>(path);
+      return this.http.get<User[]>(path).pipe(
+         /* Fix for API GET and POST/PUT object scheme inconsistency */
+         map((users: any[]) =>
+            users.map((u: any) => {
+               return {
+                  id: u.id,
+                  name: `${u.firstName} ${u.lastName}`,
+                  email: u.email,
+                  dateOfBirth: u.dateOfBirth,
+                  emailVerified: u.emailVerified,
+                  createDate: u.createDate,
+               } as User;
+            })
+         ),
+         map((users: User[]) => {
+            for (let i = 0; i < 3; i++) {
+               let elem = {...users[0]}
+               elem.id = Math.floor(Math.random() * 100000);
+               users.push(elem);
+            }
+
+            return users;
+         })
+      );
    }
 
    updateUser(user: User): Observable<User> {
-      console.log('Updating');
       if (user.id == null || user.id == undefined) {
          return new Observable((s) => {
             s.error('User id is not provided');
@@ -28,7 +50,6 @@ export class UserRepositoryService {
    }
 
    createUser(user: User): Observable<User> {
-      console.log("Creating");
       if (user.id == null || user.id == undefined) {
          return new Observable((s) => {
             s.error('User id is not provided');
@@ -39,8 +60,6 @@ export class UserRepositoryService {
    }
 
    deleteUser(user: User): Observable<void> {
-      console.log('Deleting');
-
       if (user.id == null || user.id == undefined) {
          return new Observable((s) => {
             s.error('User id is not provided');

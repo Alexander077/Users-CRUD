@@ -1,21 +1,23 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button class="mt-3" *ngIf="isBackButtonVisible" routerLink="/users">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-
-  <span class="mt-3 ms-2">{{communicationService.appTitle$ | async}}</span>
-
-  <div class="ms-auto mt-3">
-    <button mat-icon-button class="" *ngIf="isSaveChangesButtonVisible && !isUploadSpinnerVisible && !isDoneIconVisible"
-      (click)="saveChanges()">
-      <mat-icon>cloud_upload</mat-icon>
+<div class="d-flex flex-column h-100">
+  <mat-toolbar color="primary" class="flex-shrink-0 shadow">
+    <button mat-icon-button class="" *ngIf="isBackButtonVisible" routerLink="/users">
+      <mat-icon>arrow_back</mat-icon>
     </button>
-    <mat-spinner class="me-2" *ngIf="isUploadSpinnerVisible && !isDoneIconVisible" diameter="25" color="accent">
-    </mat-spinner>
-    <mat-icon *ngIf="isDoneIconVisible" class="me-2 mt-2">done</mat-icon>
-  </div>
-</mat-toolbar>
-<header class="p-2 d-flex">
 
-</header>
-<router-outlet></router-outlet>
+    <span class="ms-2">{{communicationService.appTitle$ | async}}</span>
+
+    <div class="ms-auto">
+      <button mat-icon-button class=""
+        *ngIf="isSaveChangesButtonVisible && !isUploadSpinnerVisible && !isDoneIconVisible" (click)="saveChanges()">
+        <mat-icon>cloud_upload</mat-icon>
+      </button>
+      <mat-spinner class="me-2" *ngIf="isUploadSpinnerVisible && !isDoneIconVisible" diameter="25" color="accent">
+      </mat-spinner>
+      <mat-icon *ngIf="isDoneIconVisible" class="me-2 mt-2">done</mat-icon>
+    </div>
+  </mat-toolbar>
+
+  <div style="overflow-y: scroll;" class="flex-grow-1">
+    <router-outlet></router-outlet>
+  </div>
+</div>

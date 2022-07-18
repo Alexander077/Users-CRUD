@@ -1,11 +1,10 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { CommunicationService } from 'src/app/services/communication/communication.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { ConfirmationDialogComponent, ConfirmationDialogData } from '../confirmation-dialog/confirmation-dialog.component';
-import { BehaviorSubject, filter, map, Observable, take } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 import { ModelState } from 'src/app/models/ModelState';
 import { LocalUser } from 'src/app/models/LocalUser';
 import { MatSnackBar } from '@angular/material/snack-bar';

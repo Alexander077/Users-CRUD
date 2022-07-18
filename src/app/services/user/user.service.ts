@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, map, Observable, ReplaySubject, switchMap, take, zip } from 'rxjs';
+import { map, Observable, ReplaySubject, take, zip } from 'rxjs';
 import { User } from 'src/app/models/User';
-import { environment } from 'src/environments/environment';
 import { UserRepositoryService } from '../user-repository/user-repository.service';
 import * as localforage from 'localforage';
 import { LocalUser } from 'src/app/models/LocalUser';

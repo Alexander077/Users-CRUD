@@ -7,7 +7,6 @@ import { UserService } from 'src/app/services/user/user.service';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from 'moment';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LocalUser } from 'src/app/models/LocalUser';
 import { ModelState } from 'src/app/models/ModelState';

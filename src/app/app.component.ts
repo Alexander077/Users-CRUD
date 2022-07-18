@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
       public communicationService: CommunicationService,
       private router: Router,
       private userService: UserService,
-      private snackBar: MatSnackBar
+      private snackBar: MatSnackBar,
    ) {
       router.events.pipe(filter((e) => e instanceof NavigationEnd)).subscribe((e) => {
          let ev = e as NavigationEnd;
@@ -28,8 +28,7 @@ export class AppComponent implements OnInit {
          this.isSaveChangesButtonVisible = ev.urlAfterRedirects.startsWith('/users');
       });
    }
-   ngOnInit(){
-   }
+   ngOnInit() {}
 
    saveChanges() {
       this.isUploadSpinnerVisible = true;
@@ -39,7 +38,6 @@ export class AppComponent implements OnInit {
          .pipe(take(1))
          .subscribe({
             complete: () => {
-               // console.log('Users update complete');
                this.isUploadSpinnerVisible = false;
                this.isDoneIconVisible = true;
                this.snackBar.open('Successfully synchronized with remote server', '', {

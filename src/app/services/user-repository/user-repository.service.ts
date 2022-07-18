@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, ReplaySubject, take } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { User } from 'src/app/models/User';
 import { environment } from 'src/environments/environment';
 
@@ -25,16 +25,7 @@ export class UserRepositoryService {
                   createDate: u.createDate,
                } as User;
             })
-         ),
-         map((users: User[]) => {
-            for (let i = 0; i < 3; i++) {
-               let elem = {...users[0]}
-               elem.id = Math.floor(Math.random() * 100000);
-               users.push(elem);
-            }
-
-            return users;
-         })
+         )
       );
    }
 
